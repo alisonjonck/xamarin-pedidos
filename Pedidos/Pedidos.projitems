@@ -9,8 +9,8 @@
     <Import_RootNamespace>Pedidos</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Pedido.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Promocao.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Produto.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Entities\" />

@@ -1,8 +1,8 @@
 ﻿namespace Pedidos.Entities
 {
-    public class Pedido
+    public class Produto
     {
-        public Pedido()
+        public Produto()
         {
         }
 
