@@ -15,8 +15,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Categoria.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Carrinho.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ProdutoCarrinho.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IProdutoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Entities\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
   </ItemGroup>
 </Project>

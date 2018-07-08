@@ -14,6 +14,10 @@
 
   <ItemGroup>
     <Folder Include="Entities\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pedidos_Service\Pedidos_Service.csproj" />
   </ItemGroup>
   <Import Project="..\Pedidos\Pedidos.projitems" Label="Shared" Condition="Exists('..\Pedidos\Pedidos.projitems')" />
 </Project>
