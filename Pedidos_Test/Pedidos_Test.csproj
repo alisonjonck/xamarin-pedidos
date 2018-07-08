@@ -12,5 +12,8 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
   <Import Project="..\Pedidos\Pedidos.projitems" Label="Shared" Condition="Exists('..\Pedidos\Pedidos.projitems')" />
 </Project>
