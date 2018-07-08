@@ -1,16 +1,16 @@
 ﻿namespace Pedidos.Entities
 {
-    public class Produto
+    public class ProdutoCarrinho
     {
-        public Produto()
+        public ProdutoCarrinho()
         {
         }
 
-        public Produto(int id, string name, string description, string photo, decimal price, int categoryId)
+        public ProdutoCarrinho(int id, string name, int quantity, string photo, decimal price, int categoryId)
         {
             Id = id;
             Name = name;
-            Description = description;
+            Quantity = quantity;
             Photo = photo;
             Price = price;
             CategoryId = categoryId;
@@ -20,12 +20,12 @@
 
         public string Name { get; set; }
 
-        public string Description { get; set; }
-
         public string Photo { get; set; }
 
         public decimal Price { get; set; }
 
         public int CategoryId { get; set; }
+
+        public int Quantity { get; set; }
     }
 }
