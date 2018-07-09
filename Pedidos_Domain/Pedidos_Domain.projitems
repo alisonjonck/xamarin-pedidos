@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{67513FA4-53D8-42A4-9F23-8C698080962D}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Pedidos_Domain</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Promocao.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Produto.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Politica.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Categoria.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Carrinho.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\ProdutoCarrinho.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IProdutoService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Entities\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
+  </ItemGroup>
+</Project>
