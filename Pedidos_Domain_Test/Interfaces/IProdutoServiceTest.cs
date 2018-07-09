@@ -10,22 +10,49 @@ namespace Pedidos_Test.Interfaces
     [TestClass]
     public class IProdutoServiceTest
     {
+        Mock<IProdutoService> mockService;
+
+        IProdutoService service
+        {
+            get
+            {
+                return mockService.Object;
+            }
+        }
+
+        [TestInitialize]
+        public void StartUp()
+        {
+            mockService = new Mock<IProdutoService>();
+        }
+
+        [TestMethod]
+        public void TestProdutoServiceInterface()
+        {
+            Assert.IsNotNull(service);
+            Assert.IsInstanceOfType(service, typeof(IProdutoService));
+        }
+
         [TestMethod]
         public void TestProdutoServiceInterfaceGetProdutos()
         {
-            Mock<IProdutoService> mockService = new Mock<IProdutoService>();
-
             mockService.Setup(m => m.GetProdutosAsync()).Returns(Task.FromResult(new List<Produto>()));
-
-            var service = mockService.Object;
-
-            Assert.IsNotNull(service);
-            Assert.IsInstanceOfType(service, typeof(IProdutoService));
 
             var produtos = service.GetProdutosAsync();
 
             Assert.IsNotNull(produtos);
             Assert.IsInstanceOfType(produtos.Result, typeof(List<Produto>));
+        }
+
+        [TestMethod]
+        public void TestProdutoServiceInterfaceGetCategorias()
+        {
+            mockService.Setup(m => m.GetCategoriasAsync()).Returns(Task.FromResult(new List<Categoria>()));
+
+            var categorias = service.GetCategoriasAsync();
+
+            Assert.IsNotNull(categorias);
+            Assert.IsInstanceOfType(categorias.Result, typeof(List<Categoria>));
         }
     }
 }
