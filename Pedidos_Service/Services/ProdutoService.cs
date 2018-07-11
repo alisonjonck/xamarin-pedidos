@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Pedidos_Domain.Entities;
 using Pedidos_Domain.Interfaces;
-using Pedidos_Service.ViewModels;
+using Pedidos_Service.DTOs;
 
 namespace Pedidos_Service.Services
 {
@@ -15,8 +15,9 @@ namespace Pedidos_Service.Services
     {
         readonly string _urlProdutos = "https://pastebin.com/raw/eVqp7pfX";
         readonly string _urlCategorias = "http://pastebin.com/raw/YNR2rsWe";
+        readonly string _urlPromocoes = "https://pastebin.com/raw/R9cJFBtG";
 
-        public ProdutoService(string urlProdutos = null, string urlCategorias = null)
+        public ProdutoService(string urlProdutos = null, string urlCategorias = null, string urlPromocoes = null)
         {
             if (!string.IsNullOrWhiteSpace(urlProdutos))
             {
@@ -26,18 +27,22 @@ namespace Pedidos_Service.Services
             {
                 _urlCategorias = urlCategorias;
             }
+            if (!string.IsNullOrWhiteSpace(urlPromocoes))
+            {
+                _urlPromocoes = urlPromocoes;
+            }
         }
 
         public async Task<List<Categoria>> GetCategoriasAsync()
         {
-            var categorias = await GetListOfViewModelOfAsync<Categoria>(_urlCategorias);
+            var categorias = await GetListOfAsync<Categoria>(_urlCategorias);
 
             return categorias;
         }
 
         public async Task<List<Produto>> GetProdutosAsync()
         {
-            var produtosVM = await GetListOfViewModelOfAsync<ProdutoViewModel>(_urlProdutos);
+            var produtosVM = await GetListOfAsync<ProdutoDTO>(_urlProdutos);
 
             var produtos = new List<Produto>();
 
@@ -49,7 +54,21 @@ namespace Pedidos_Service.Services
             return produtos;
         }
 
-        async Task<List<T>> GetListOfViewModelOfAsync<T>(string url)
+        public async Task<List<Promocao>> GetPromocoesAsync()
+        {
+            var promocoesVM = await GetListOfAsync<PromocaoDTO>(_urlPromocoes);
+
+            var promocoes = new List<Promocao>();
+
+            foreach (var vm in promocoesVM)
+            {
+                promocoes.Add(new Promocao(vm.Name, vm.CategoryId, vm.Policies));
+            }
+
+            return promocoes;
+        }
+
+        async Task<List<T>> GetListOfAsync<T>(string url)
         {
             HttpClient client = new HttpClient();
             var uri = new Uri(url);

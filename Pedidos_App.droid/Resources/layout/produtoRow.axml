@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:paddingBottom="4dp">
+    <FFImageLoading.Views.ImageViewAsync
+        android:id="@+id/photoImageView"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:padding="5dp" />
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_toRightOf="@id/photoImageView"
+        android:text="Nome"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp" />
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_toRightOf="@id/photoImageView"
+        android:layout_below="@id/nameTextView"
+        android:text="Preço"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp" />
+    <TextView
+        android:id="@+id/promocaoTextView"
+        android:layout_toRightOf="@id/photoImageView"
+        android:layout_below="@id/priceTextView"
+        android:text="Promoção"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
+        android:gravity="right"
+        android:layout_toRightOf="@id/photoImageView"
+        android:layout_below="@id/promocaoTextView"
+        android:id="@+id/quantidadeUnidadeLayout">
+        <TextView
+            android:id="@+id/quantidadeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:textColor="@android:color/holo_orange_light"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0" />
+        <TextView
+            android:id="@+id/UnidadeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="UN" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/buttonsQuantidadeLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
+        android:gravity="right"
+        android:layout_toRightOf="@id/photoImageView"
+        android:layout_below="@id/quantidadeUnidadeLayout">
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnDecreaseQuantidade"
+            android:text="-" />
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnIncreaseQuantidade"
+            android:text="+" />
+    </LinearLayout>
+</RelativeLayout>

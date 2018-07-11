@@ -54,5 +54,16 @@ namespace Pedidos_Test.Interfaces
             Assert.IsNotNull(categorias);
             Assert.IsInstanceOfType(categorias.Result, typeof(List<Categoria>));
         }
+
+        [TestMethod]
+        public void TestProdutoServiceInterfaceGetPromocoes()
+        {
+            mockService.Setup(m => m.GetPromocoesAsync()).Returns(Task.FromResult(new List<Promocao>()));
+
+            var promocoes = service.GetPromocoesAsync();
+
+            Assert.IsNotNull(promocoes);
+            Assert.IsInstanceOfType(promocoes.Result, typeof(List<Promocao>));
+        }
     }
 }

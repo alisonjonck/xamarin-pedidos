@@ -13,7 +13,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Folder Include="DTOs\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="..\Pedidos_Domain\Pedidos_Domain.projitems" Label="Shared" Condition="Exists('..\Pedidos_Domain\Pedidos_Domain.projitems')" />

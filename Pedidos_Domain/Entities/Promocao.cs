@@ -9,6 +9,13 @@ namespace Pedidos_Domain.Entities
             Policies = new List<Politica>();
         }
 
+        public Promocao(string name, int categoryId, IList<Politica> policies)
+        {
+            Name = name;
+            CategoryId = categoryId;
+            Policies = policies;
+        }
+
         public string Name { get; set; }
 
         public int CategoryId { get; set; }

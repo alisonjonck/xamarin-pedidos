@@ -4,12 +4,18 @@ using Android.OS;
 using Pedidos_Domain.Interfaces;
 using Pedidos_Service.Services;
 using System.Linq;
+using Pedidos_Domain.Entities;
+using Android.Content;
+using System.Threading.Tasks;
+using Pedidos_App.droid.Adapters;
 
 namespace Pedidos_App.droid
 {
-    [Activity(Label = "Pedidos_App.droid", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Catálogo", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
+        ListView catalogo;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -17,17 +23,15 @@ namespace Pedidos_App.droid
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.myButton);
+            LoadCatalogo();
+        }
 
+        async void LoadCatalogo()
+        {
             IProdutoService produtoService = new ProdutoService();
-
-            button.Click += async delegate
-            {
-                var list = await produtoService.GetProdutosAsync();
-                button.Text = $"{list.Count()} Produtos cadastrados!";
-            };
+            var produtos = await produtoService.GetProdutosAsync();
+            catalogo = FindViewById<ListView>(Resource.Id.listView);
+            catalogo.Adapter = new ProdutoListAdapter(produtos);
         }
     }
 }

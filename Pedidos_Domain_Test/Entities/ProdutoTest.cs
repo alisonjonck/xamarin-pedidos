@@ -42,5 +42,15 @@ namespace Pedidos_Test.Entities
             Assert.AreEqual(1466.10M, produto.Price);
             Assert.AreEqual(1, produto.CategoryId);
         }
+
+        [TestMethod]
+        public void TestProdutoInstanceShowsNameAndPrice()
+        {
+            var produto = new Produto();
+            produto.Name = "32\" Full HD Flat Smart TV H5103 Series 3";
+            produto.Price = 1466.10M;
+
+            Assert.AreEqual(produto.ToString(), $"{produto.Name} {produto.Price}");
+        }
     }
 }

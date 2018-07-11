@@ -9,5 +9,7 @@ namespace Pedidos_Domain.Interfaces
         Task<List<Produto>> GetProdutosAsync();
 
         Task<List<Categoria>> GetCategoriasAsync();
+
+        Task<List<Promocao>> GetPromocoesAsync();
     }
 }

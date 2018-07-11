@@ -27,5 +27,10 @@
         public decimal Price { get; set; }
 
         public int CategoryId { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name} {Price}";
+        }
     }
 }

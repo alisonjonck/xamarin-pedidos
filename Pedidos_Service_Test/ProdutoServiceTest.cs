@@ -43,5 +43,20 @@ namespace Pedidos_Service_Test
             Assert.IsInstanceOfType(categorias, typeof(List<Categoria>));
             Assert.IsTrue(categorias.Count() > 0);
         }
+
+        [TestMethod]
+        public void TestProdutoServiceGetCategoriasShouldReturnListaPromocoes()
+        {
+            var promocoes = service.GetPromocoesAsync().Result;
+
+            Assert.IsNotNull(promocoes);
+            Assert.IsInstanceOfType(promocoes, typeof(List<Promocao>));
+            Assert.IsTrue(promocoes.Count() > 0);
+
+            foreach (var promocao in promocoes)
+            {
+                Assert.IsTrue(promocao.Policies.Count() > 0, "Promoção sem política");
+            }
+        }
     }
 }

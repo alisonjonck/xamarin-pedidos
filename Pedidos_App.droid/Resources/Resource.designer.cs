@@ -1819,6 +1819,9 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0029
 			public const int SYM = 2131427369;
 			
+			// aapt resource value: 0x7f0b0080
+			public const int UnidadeTextView = 2131427456;
+			
 			// aapt resource value: 0x7f0b006a
 			public const int action0 = 2131427434;
 			
@@ -1900,8 +1903,17 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b002f
 			public const int bottom = 2131427375;
 			
+			// aapt resource value: 0x7f0b0082
+			public const int btnDecreaseQuantidade = 2131427458;
+			
+			// aapt resource value: 0x7f0b0083
+			public const int btnIncreaseQuantidade = 2131427459;
+			
 			// aapt resource value: 0x7f0b003e
 			public const int buttonPanel = 2131427390;
+			
+			// aapt resource value: 0x7f0b0081
+			public const int buttonsQuantidadeLayout = 2131427457;
 			
 			// aapt resource value: 0x7f0b006b
 			public const int cancel_action = 2131427435;
@@ -1984,14 +1996,17 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b000f
 			public const int listMode = 2131427343;
 			
+			// aapt resource value: 0x7f0b0066
+			public const int listView = 2131427430;
+			
 			// aapt resource value: 0x7f0b003c
 			public const int list_item = 2131427388;
 			
 			// aapt resource value: 0x7f0b006d
 			public const int media_actions = 2131427437;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int message = 2131427450;
+			// aapt resource value: 0x7f0b0084
+			public const int message = 2131427460;
 			
 			// aapt resource value: 0x7f0b0023
 			public const int middle = 2131427363;
@@ -1999,8 +2014,8 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b001a
 			public const int multiply = 2131427354;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int myButton = 2131427430;
+			// aapt resource value: 0x7f0b007b
+			public const int nameTextView = 2131427451;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int never = 2131427373;
@@ -2023,11 +2038,26 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0040
 			public const int parentPanel = 2131427392;
 			
+			// aapt resource value: 0x7f0b007a
+			public const int photoImageView = 2131427450;
+			
+			// aapt resource value: 0x7f0b007c
+			public const int priceTextView = 2131427452;
+			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
 			
 			// aapt resource value: 0x7f0b0006
 			public const int progress_horizontal = 2131427334;
+			
+			// aapt resource value: 0x7f0b007d
+			public const int promocaoTextView = 2131427453;
+			
+			// aapt resource value: 0x7f0b007f
+			public const int quantidadeTextView = 2131427455;
+			
+			// aapt resource value: 0x7f0b007e
+			public const int quantidadeUnidadeLayout = 2131427454;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int radio = 2131427408;
@@ -2338,19 +2368,22 @@ namespace Pedidos_App.droid
 			public const int notification_template_part_time = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int select_dialog_item_material = 2130968618;
+			public const int produtoRow = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int select_dialog_multichoice_material = 2130968619;
+			public const int select_dialog_item_material = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int select_dialog_singlechoice_material = 2130968620;
+			public const int select_dialog_multichoice_material = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int support_simple_spinner_dropdown_item = 2130968621;
+			public const int select_dialog_singlechoice_material = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int tooltip = 2130968622;
+			public const int support_simple_spinner_dropdown_item = 2130968622;
+			
+			// aapt resource value: 0x7f04002f
+			public const int tooltip = 2130968623;
 			
 			static Layout()
 			{
@@ -2468,11 +2501,17 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f060010
 			public const int abc_toolbar_collapse_description = 2131099664;
 			
+			// aapt resource value: 0x7f060022
+			public const int app_name = 2131099682;
+			
 			// aapt resource value: 0x7f060020
-			public const int app_name = 2131099680;
+			public const int btnPromocoes = 2131099680;
+			
+			// aapt resource value: 0x7f060021
+			public const int hello = 2131099681;
 			
 			// aapt resource value: 0x7f06001f
-			public const int hello = 2131099679;
+			public const int listPromocoes = 2131099679;
 			
 			// aapt resource value: 0x7f060011
 			public const int search_menu_title = 2131099665;

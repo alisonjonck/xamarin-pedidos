@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Pedidos_Service.ViewModels
+namespace Pedidos_Service.DTOs
 {
-    public class ProdutoViewModel
+    public class ProdutoDTO
     {
-        public ProdutoViewModel()
+        public ProdutoDTO()
         {
         }
 
