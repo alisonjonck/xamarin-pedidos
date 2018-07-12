@@ -23,11 +23,18 @@ namespace Pedidos_Domain.Entities
             if (produto.CategoryId != Promocao.CategoryId)
                 throw new Exception($"Produto deve pertencer a categoria Id {Promocao.CategoryId}");
 
-            var politica = Promocao.Policies.OrderByDescending(p => p.Min)
-                                   .FirstOrDefault(p => p.Min <= quantidade);
+            var politica = GetPoliticaPromocao(quantidade);
 
             return (produto.Price * (politica != null ? (1 - (politica.Discount / 100)) : 1))
                 * quantidade;
+        }
+
+        public Politica GetPoliticaPromocao(int quantidade)
+        {
+            var politica = Promocao.Policies.OrderByDescending(p => p.Min)
+                                   .FirstOrDefault(p => p.Min <= quantidade);
+
+            return politica;
         }
     }
 }

@@ -27,9 +27,7 @@ namespace Pedidos_Service.Services
                            select new CatalogoPromocao()
                            {
                                Promocao = promocoes.FirstOrDefault(x => x.CategoryId == pg.Key),
-                               Produtos = pg.Select(c => new ProdutoPromocao(){
-                                    Produto = c
-                               }).ToList()
+                               Produtos = pg.Select(c => c).ToList()
                             }).ToList();
 
             return produtos;

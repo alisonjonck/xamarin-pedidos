@@ -27,6 +27,32 @@ namespace Pedidos_Domain_Test.Entities
         }
 
         [TestMethod]
+        public void TestGetPoliticaPromocao()
+        {
+            var politicas = new List<Politica>();
+            politicas.Add(new Politica(5, 10));
+
+            catalogo.Promocao = new Promocao("Teste Política", 1, politicas);
+
+            catalogo.Produtos.Add(new Produto()
+            {
+                Id = 1,
+                Price = 10M,
+                CategoryId = 1
+            });
+
+            var politica = catalogo.GetPoliticaPromocao(quantidade: 2);
+
+            Assert.IsNull(politica);
+
+            politica = catalogo.GetPoliticaPromocao(quantidade: 5);
+
+            Assert.IsNotNull(politica);
+            Assert.AreEqual(10M, politica.Discount);
+            Assert.AreEqual(5, politica.Min);
+        }
+
+        [TestMethod]
         public void TestCatalogoGetPrecoPromocao()
         {
             var politicas = new List<Politica>();
