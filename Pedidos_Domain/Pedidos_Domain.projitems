@@ -16,6 +16,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Carrinho.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ProdutoCarrinho.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IProdutoService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ICatalogoService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\CatalogoPromocao.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\ProdutoPromocao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Entities\" />

@@ -15,4 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Pedidos_Service\Pedidos_Service.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
 </Project>
