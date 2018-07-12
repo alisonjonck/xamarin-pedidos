@@ -17,5 +17,8 @@
     <Folder Include="Entities\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Entities\ProdutoPromocaoTest.cs" />
+  </ItemGroup>
   <Import Project="..\Pedidos_Domain\Pedidos_Domain.projitems" Label="Shared" Condition="Exists('..\Pedidos_Domain\Pedidos_Domain.projitems')" />
 </Project>

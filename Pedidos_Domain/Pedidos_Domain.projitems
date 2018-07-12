@@ -18,7 +18,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IProdutoService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ICatalogoService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\CatalogoPromocao.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\ProdutoPromocao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Entities\" />
