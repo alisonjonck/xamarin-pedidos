@@ -1,5 +1,4 @@
-﻿using System;
-using Android.Widget;
+﻿using Android.Widget;
 
 namespace Pedidos_App.droid.ViewModels
 {

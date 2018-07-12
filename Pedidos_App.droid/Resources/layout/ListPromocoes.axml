@@ -6,9 +6,9 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
-    <Button
-        android:text="Abrir Catálogo Promoções"
+    <ListView
+        android:id="@+id/promocoesListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnOpenCatalogo" />
+        android:fastScrollEnabled="true" />
 </LinearLayout>

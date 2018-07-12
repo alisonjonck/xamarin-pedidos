@@ -93,9 +93,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Adapters\ProdutoListAdapter.cs" />
     <Compile Include="ViewModels\ProdutoViewModel.cs" />
-    <Compile Include="ViewModels\CategoriaViewModel.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="ListPromocoesActivity.cs" />
+    <Compile Include="Adapters\CatalogoListAdapter.cs" />
+    <Compile Include="ViewModels\CatalogoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -112,6 +113,10 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\layout\produtoRow.axml" />
+    <AndroidResource Include="Resources\layout\CatalogoPromocaoRow.axml" />
+    <AndroidResource Include="Resources\layout\ListPromocoes.axml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\layout\toolbar.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

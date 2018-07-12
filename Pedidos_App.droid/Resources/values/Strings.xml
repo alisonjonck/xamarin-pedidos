@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="listPromocoes">Promoções</string>
+    <string name="listPromocoes">Catálogo Promoções</string>
     <string name="btnPromocoes">Abrir Promoções!</string>
     <string name="hello">Hello World, Click Me!</string>
     <string name="app_name">Pedidos_App.droid</string>

@@ -8,14 +8,13 @@ using Pedidos_Domain.Entities;
 using Android.Content;
 using System.Threading.Tasks;
 using Pedidos_App.droid.Adapters;
+using System.Collections.Generic;
 
 namespace Pedidos_App.droid
 {
-    [Activity(Label = "Catálogo", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Pedidos", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
-        ListView catalogo;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -23,15 +22,17 @@ namespace Pedidos_App.droid
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            LoadCatalogo();
-        }
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetActionBar(toolbar);
+            ActionBar.Title = "Pedidos";
 
-        async void LoadCatalogo()
-        {
-            IProdutoService produtoService = new ProdutoService();
-            var produtos = await produtoService.GetProdutosAsync();
-            catalogo = FindViewById<ListView>(Resource.Id.listView);
-            catalogo.Adapter = new ProdutoListAdapter(produtos);
+            var btnCatagolo = FindViewById<Button>(Resource.Id.btnOpenCatalogo);
+
+            btnCatagolo.Click += (sender, e) => {
+                var intent = new Intent(this, typeof(ListPromocoesActivity));
+
+                StartActivity(intent);
+            };
         }
     }
 }

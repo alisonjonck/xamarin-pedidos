@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Pedidos_Domain.Entities;
 using Pedidos_Domain.Interfaces;

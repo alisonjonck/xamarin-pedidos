@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Android.Content;
-using Android.Graphics.Drawables;
+﻿using System.Collections.Generic;
 using Android.Views;
 using Android.Widget;
 using FFImageLoading;
