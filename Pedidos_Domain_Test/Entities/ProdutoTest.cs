@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pedidos_Domain.Entities;
 
@@ -6,10 +7,17 @@ namespace Pedidos_Test.Entities
     [TestClass]
     public class ProdutoTest
     {
+        Produto produto;
+
+        [TestInitialize]
+        public void StartUp()
+        {
+            produto = new Produto();
+        }
+
         [TestMethod]
         public void TestProdutoInstance()
         {
-            var produto = new Produto();
             produto.Id = 1;
             produto.Name = "32\" Full HD Flat Smart TV H5103 Series 3";
 
@@ -34,6 +42,7 @@ namespace Pedidos_Test.Entities
             Assert.IsNotNull(produto.Photo);
             Assert.IsNotNull(produto.Price);
             Assert.IsNotNull(produto.CategoryId);
+            Assert.IsNotNull(produto.Quantidade);
 
             Assert.AreEqual(1, produto.Id);
             Assert.AreEqual("32\" Full HD Flat Smart TV H5103 Series 3", produto.Name);
@@ -41,16 +50,23 @@ namespace Pedidos_Test.Entities
             Assert.AreEqual("https://simplest-meuspedidos-arquivos.s3.amazonaws.com/media/imagem_produto/133421/fda44b12-48f7-11e6-996c-0aad52ea90db.jpeg", produto.Photo);
             Assert.AreEqual(1466.10M, produto.Price);
             Assert.AreEqual(1, produto.CategoryId);
+            Assert.AreEqual(0, produto.Quantidade);
         }
 
         [TestMethod]
         public void TestProdutoInstanceShowsNameAndPrice()
         {
-            var produto = new Produto();
             produto.Name = "32\" Full HD Flat Smart TV H5103 Series 3";
             produto.Price = 1466.10M;
 
             Assert.AreEqual(produto.ToString(), $"{produto.Name} {produto.Price}");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExceptionQuantidade))]
+        public void TestProdutoQuantidadeMinValueShouldBeZero()
+        {
+            produto.Quantidade = -1;
         }
     }
 }

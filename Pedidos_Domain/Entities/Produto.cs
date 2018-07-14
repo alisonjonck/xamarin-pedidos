@@ -1,4 +1,6 @@
-﻿namespace Pedidos_Domain.Entities
+﻿using System;
+
+namespace Pedidos_Domain.Entities
 {
     public class Produto
     {
@@ -27,6 +29,20 @@
         public decimal Price { get; set; }
 
         public int CategoryId { get; set; }
+
+        int _quantidade = 0;
+        public int Quantidade
+        {
+            get { return _quantidade; }
+            set
+            {
+                if (value < 0)
+                    throw new ExceptionQuantidade("Valor mínimo deve ser 0");
+
+                _quantidade = value;
+            }
+
+        }
 
         public override string ToString()
         {

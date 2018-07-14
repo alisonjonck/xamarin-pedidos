@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
@@ -72,8 +73,30 @@ namespace Pedidos_App.droid.Adapters
                         var photo = view.FindViewById<ImageView>(Resource.Id.photoImageView);
                         var name = view.FindViewById<TextView>(Resource.Id.nameTextView);
                         var price = view.FindViewById<TextView>(Resource.Id.priceTextView);
+                        var quantidade = view.FindViewById<TextView>(Resource.Id.quantidadeTextView);
 
-                        view.Tag = new ProdutoViewModel() { Photo = photo, Name = name, Price = price };
+                        var btnIncreaseQuantidade = view.FindViewById<Button>(Resource.Id.btnIncreaseQuantidade);
+                        btnIncreaseQuantidade.Click += (sender, e) =>
+                        {
+                            (_catalogos[position] as Produto).Quantidade += 1;
+                            NotifyDataSetChanged();
+                        };
+
+                        var btnDecreaseQuantidade = view.FindViewById<Button>(Resource.Id.btnDecreaseQuantidade);
+                        btnDecreaseQuantidade.Click += (sender, e) =>
+                        {
+                            try
+                            {
+                                (_catalogos[position] as Produto).Quantidade -= 1;
+                                NotifyDataSetChanged();
+                            }
+                            catch(ExceptionQuantidade ex)
+                            {
+                                // Quantidade não deve ser menor que zero
+                            }
+                        };
+
+                        view.Tag = new ProdutoViewModel() { Photo = photo, Name = name, Price = price, Quantidade = quantidade };
 
                         break;
 
@@ -105,6 +128,7 @@ namespace Pedidos_App.droid.Adapters
                     holder.Photo.SetImageDrawable(imageView.Drawable);
                     holder.Name.Text = produto.Name;
                     holder.Price.Text = StringFormatter.ToBRLCurrency(produto.Price.ToString());
+                    holder.Quantidade.Text = produto.Quantidade.ToString();
                     break;
 
                 case HEADER:
