@@ -35,7 +35,8 @@ namespace Pedidos_App.droid
             var catalogos = await catalogoService.GetPromocoesAsync();
 
             listView = FindViewById<ListView>(Resource.Id.promocoesListView);
-            listView.Adapter = new CatalogoListAdapter(catalogos);
+
+            listView.Adapter = new CatalogoListAdapter(this, catalogos);
         }
     }
 }

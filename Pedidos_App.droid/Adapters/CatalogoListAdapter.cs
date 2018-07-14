@@ -1,40 +1,62 @@
 ﻿using System.Collections.Generic;
+using Android.Content;
 using Android.Views;
 using Android.Widget;
+using FFImageLoading;
+using FFImageLoading.Views;
 using Pedidos_App.droid.ViewModels;
+using Pedidos_CrossCutting.Helpers;
 using Pedidos_Domain.Entities;
 
 namespace Pedidos_App.droid.Adapters
 {
-    public class CatalogoListAdapter : BaseAdapter<CatalogoPromocao>
+    public class CatalogoListAdapter : BaseAdapter<object>
     {
-        List<CatalogoPromocao> _catalogos;
+        List<object> _catalogos = new List<object>();
 
-        public CatalogoListAdapter(List<CatalogoPromocao> catalogos)
-        {
-            _catalogos = catalogos;
-        }
+        const int PRODUTO_ITEM = 0;
 
-        public override CatalogoPromocao this[int position]
+        const int HEADER = 1;
+
+        LayoutInflater layoutInflater;
+
+        public CatalogoListAdapter(Context context, List<CatalogoPromocao> catalogos)
         {
-            get
+            foreach (var catalogo in catalogos)
             {
-                return _catalogos[position];
+                _catalogos.Add(catalogo);
+
+                foreach (var produto in catalogo.Produtos)
+                {
+                    _catalogos.Add(produto);
+                }
             }
+
+            layoutInflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
         }
 
-        public override int Count
+        public override object this[int position] { get { return _catalogos[position]; } }
+
+        public override int Count { get { return _catalogos.Count; } }
+
+        public override long GetItemId(int position) { return position; }
+
+        public override int GetItemViewType(int position)
         {
-            get
+            if (_catalogos[position] is CatalogoPromocao)
             {
-                return _catalogos.Count;
+                return HEADER;
             }
+
+            if (_catalogos[position] is Produto)
+            {
+                return PRODUTO_ITEM;
+            }
+
+            return base.GetItemViewType(position);
         }
 
-        public override long GetItemId(int position)
-        {
-            return position;
-        }
+        public override int ViewTypeCount => 2;
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
@@ -42,19 +64,63 @@ namespace Pedidos_App.droid.Adapters
 
             if (view == null)
             {
-                view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.CatalogoPromocaoRow, parent, false);
+                switch (GetItemViewType(position))
+                {
+                    case PRODUTO_ITEM:
+                        view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.produtoRow, parent, false);
 
-                var promocaoName = view.FindViewById<TextView>(Resource.Id.promocaoNameTextView);
+                        var photo = view.FindViewById<ImageView>(Resource.Id.photoImageView);
+                        var name = view.FindViewById<TextView>(Resource.Id.nameTextView);
+                        var price = view.FindViewById<TextView>(Resource.Id.priceTextView);
 
-                view.Tag = new CatalogoViewModel() { PromocaoName = promocaoName };
+                        view.Tag = new ProdutoViewModel() { Photo = photo, Name = name, Price = price };
+
+                        break;
+
+                    case HEADER:
+                        view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.CatalogoPromocaoRow, parent, false);
+
+                        var promocaoName = view.FindViewById<TextView>(Resource.Id.promocaoNameTextView);
+
+                        view.Tag = new CatalogoViewModel() { PromocaoName = promocaoName };
+
+                        break;
+
+                }
+
             }
 
-            var holder = (CatalogoViewModel)view.Tag;
+            switch (GetItemViewType(position))
+            {
+                case PRODUTO_ITEM:
+                    var holder = (ProdutoViewModel)view.Tag;
 
-            holder.PromocaoName.Text = _catalogos[position].Promocao.Name;
+                    ImageViewAsync imageView = new ImageViewAsync(parent.Context);
+
+                    var produto = _catalogos[position] as Produto;
+                    // When the image is loaded from internet 
+                    // the image is cached on disk by default 30 days
+                    ImageService.Instance.LoadUrl(produto.Photo).Into(imageView);
+
+                    holder.Photo.SetImageDrawable(imageView.Drawable);
+                    holder.Name.Text = produto.Name;
+                    holder.Price.Text = StringFormatter.ToBRLCurrency(produto.Price.ToString());
+                    break;
+
+                case HEADER:
+                    var holderHeader = (CatalogoViewModel)view.Tag;
+
+                    holderHeader.PromocaoName.Text = (_catalogos[position] as CatalogoPromocao).Promocao.Name;
+                    break;
+
+            }
 
             return view;
         }
     }
+
+
+
 }
+
 

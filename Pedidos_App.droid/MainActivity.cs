@@ -1,14 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-using Pedidos_Domain.Interfaces;
-using Pedidos_Service.Services;
-using System.Linq;
-using Pedidos_Domain.Entities;
 using Android.Content;
-using System.Threading.Tasks;
-using Pedidos_App.droid.Adapters;
-using System.Collections.Generic;
 
 namespace Pedidos_App.droid
 {
