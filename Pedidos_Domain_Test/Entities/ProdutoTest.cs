@@ -41,8 +41,10 @@ namespace Pedidos_Test.Entities
             Assert.IsNotNull(produto.Description);
             Assert.IsNotNull(produto.Photo);
             Assert.IsNotNull(produto.Price);
+            Assert.IsNull(produto.PricePromocao);
             Assert.IsNotNull(produto.CategoryId);
             Assert.IsNotNull(produto.Quantidade);
+            Assert.IsNotNull(produto.DescontoPromocao);
 
             Assert.AreEqual(1, produto.Id);
             Assert.AreEqual("32\" Full HD Flat Smart TV H5103 Series 3", produto.Name);
@@ -51,6 +53,7 @@ namespace Pedidos_Test.Entities
             Assert.AreEqual(1466.10M, produto.Price);
             Assert.AreEqual(1, produto.CategoryId);
             Assert.AreEqual(0, produto.Quantidade);
+            Assert.AreEqual(0, produto.DescontoPromocao);
         }
 
         [TestMethod]

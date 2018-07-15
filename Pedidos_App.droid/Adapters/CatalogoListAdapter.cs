@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
@@ -8,48 +11,59 @@ using FFImageLoading.Views;
 using Pedidos_App.droid.ViewModels;
 using Pedidos_CrossCutting.Helpers;
 using Pedidos_Domain.Entities;
+using static Android.Views.View;
 
 namespace Pedidos_App.droid.Adapters
 {
     public class CatalogoListAdapter : BaseAdapter<object>
     {
-        List<object> _catalogos = new List<object>();
+        ObservableCollection<object> _catalogos;
+        ObservableCollection<object> Catalogos
+        {
+            get { return _catalogos; }
+            set
+            {
+                _catalogos = value;
+                NotifyDataSetChanged();
+            }
+        }
+
+        List<CatalogoPromocao> _catalogosPromocao = new List<CatalogoPromocao>();
 
         const int PRODUTO_ITEM = 0;
 
         const int HEADER = 1;
 
-        LayoutInflater layoutInflater;
-
         public CatalogoListAdapter(Context context, List<CatalogoPromocao> catalogos)
         {
+            Catalogos = new ObservableCollection<object>();
+
             foreach (var catalogo in catalogos)
             {
-                _catalogos.Add(catalogo);
+                Catalogos.Add(catalogo);
+                _catalogosPromocao.Add(catalogo);
 
                 foreach (var produto in catalogo.Produtos)
                 {
-                    _catalogos.Add(produto);
+                    Catalogos.Add(produto);
                 }
             }
-
-            layoutInflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
         }
 
-        public override object this[int position] { get { return _catalogos[position]; } }
+        public override object this[int position] { get { return Catalogos[position]; } }
 
-        public override int Count { get { return _catalogos.Count; } }
+        public override int Count { get { return Catalogos.Count; } }
 
         public override long GetItemId(int position) { return position; }
 
         public override int GetItemViewType(int position)
         {
-            if (_catalogos[position] is CatalogoPromocao)
+            if (Catalogos[position] is CatalogoPromocao)
             {
                 return HEADER;
             }
 
-            if (_catalogos[position] is Produto)
+            if (Catalogos[position] is Produto)
             {
                 return PRODUTO_ITEM;
             }
@@ -74,29 +88,12 @@ namespace Pedidos_App.droid.Adapters
                         var name = view.FindViewById<TextView>(Resource.Id.nameTextView);
                         var price = view.FindViewById<TextView>(Resource.Id.priceTextView);
                         var quantidade = view.FindViewById<TextView>(Resource.Id.quantidadeTextView);
+                        var promocao = view.FindViewById<TextView>(Resource.Id.promocaoTextView);
 
-                        var btnIncreaseQuantidade = view.FindViewById<Button>(Resource.Id.btnIncreaseQuantidade);
-                        btnIncreaseQuantidade.Click += (sender, e) =>
-                        {
-                            (_catalogos[position] as Produto).Quantidade += 1;
-                            NotifyDataSetChanged();
-                        };
+                        var increaseBtn = view.FindViewById<Button>(Resource.Id.btnIncreaseQuantidade);
+                        var decreaseBtn = view.FindViewById<Button>(Resource.Id.btnDecreaseQuantidade);
 
-                        var btnDecreaseQuantidade = view.FindViewById<Button>(Resource.Id.btnDecreaseQuantidade);
-                        btnDecreaseQuantidade.Click += (sender, e) =>
-                        {
-                            try
-                            {
-                                (_catalogos[position] as Produto).Quantidade -= 1;
-                                NotifyDataSetChanged();
-                            }
-                            catch(ExceptionQuantidade ex)
-                            {
-                                // Quantidade não deve ser menor que zero
-                            }
-                        };
-
-                        view.Tag = new ProdutoViewModel() { Photo = photo, Name = name, Price = price, Quantidade = quantidade };
+                        view.Tag = new ProdutoViewModel() { Photo = photo, Name = name, Price = price, Quantidade = quantidade, ValorPromocao = promocao, DecreaseButton = decreaseBtn, IncreaseButton = increaseBtn };
 
                         break;
 
@@ -120,30 +117,82 @@ namespace Pedidos_App.droid.Adapters
 
                     ImageViewAsync imageView = new ImageViewAsync(parent.Context);
 
-                    var produto = _catalogos[position] as Produto;
+                    var produto = Catalogos[position] as Produto;
                     // When the image is loaded from internet 
                     // the image is cached on disk by default 30 days
                     ImageService.Instance.LoadUrl(produto.Photo).Into(imageView);
 
                     holder.Photo.SetImageDrawable(imageView.Drawable);
                     holder.Name.Text = produto.Name;
-                    holder.Price.Text = StringFormatter.ToBRLCurrency(produto.Price.ToString());
+                    holder.Price.Text = "R$ " + StringFormatter.ToBRLCurrency((produto?.PricePromocao > 0 ? produto.PricePromocao : produto.Price).ToString());
                     holder.Quantidade.Text = produto.Quantidade.ToString();
+                    holder.ValorPromocao.Text = produto.DescontoPromocao != 0
+                        ? StringFormatter.ToBRLCurrency(produto.DescontoPromocao.ToString()) + "% de desconto"
+                        : "";
+
+                    holder.IncreaseButton.SetOnClickListener(new OnClickListener(
+                        () =>
+                        {
+                            produto.Quantidade += 1;
+                            _updateValoresPromocaoProduto(produto);
+                            NotifyDataSetChanged();
+                        }));
+
+                    holder.DecreaseButton.SetOnClickListener(new OnClickListener(
+                        () =>
+                        {
+                            try
+                            {
+                                produto.Quantidade -= 1;
+
+                                _updateValoresPromocaoProduto(produto);
+                                NotifyDataSetChanged();
+                            }
+                            catch (ExceptionQuantidade ex)
+                            {
+                                // Quantidade não deve ser menor que zero
+                            }
+                        }));
+
                     break;
 
                 case HEADER:
                     var holderHeader = (CatalogoViewModel)view.Tag;
 
-                    holderHeader.PromocaoName.Text = (_catalogos[position] as CatalogoPromocao).Promocao.Name;
+                    holderHeader.PromocaoName.Text = (Catalogos[position] as CatalogoPromocao).Promocao.Name;
                     break;
 
             }
 
             return view;
         }
+
+        private async void _updateValoresPromocaoProduto(Produto produto)
+        {
+            var catalogoPromocao = await _getCatalogoPromocaoAsync(produto.CategoryId);
+
+            var politica = catalogoPromocao.GetPoliticaPromocao(produto.Quantidade);
+
+            if (politica != null)
+            {
+                produto.DescontoPromocao = politica.Discount;
+
+                produto.PricePromocao = catalogoPromocao.GetPrecoPromocao(produto.Quantidade, produto.Id);
+            }
+            else
+            {
+                produto.DescontoPromocao = 0M;
+                produto.PricePromocao = produto.Quantidade * produto.Price;
+            }
+        }
+
+        async Task<CatalogoPromocao> _getCatalogoPromocaoAsync(int categoryId)
+        {
+
+            return await Task.FromResult(
+                _catalogosPromocao.FirstOrDefault(c => c.Promocao.CategoryId == categoryId));
+        }
     }
-
-
 
 }
 

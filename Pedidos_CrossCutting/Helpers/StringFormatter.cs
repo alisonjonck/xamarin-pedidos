@@ -14,7 +14,7 @@ namespace Pedidos_CrossCutting.Helpers
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
                 var formatted = number.ToString("N2");
 
-                return $"R$ {formatted}";
+                return formatted;
             }
 
             throw new Exception("Formato inválido");

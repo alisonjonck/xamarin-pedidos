@@ -19,7 +19,7 @@ namespace Pedidos_CrossCutting_Test.Helpers
             var valorEmReais = StringFormatter.ToBRLCurrency("10");
 
             Assert.IsNotNull(valorEmReais);
-            Assert.AreEqual("R$ 10,00", valorEmReais);
+            Assert.AreEqual("10,00", valorEmReais);
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace Pedidos_CrossCutting_Test.Helpers
             var valorEmReais = StringFormatter.ToBRLCurrency("1000");
 
             Assert.IsNotNull(valorEmReais);
-            Assert.AreEqual("R$ 1.000,00", valorEmReais);
+            Assert.AreEqual("1.000,00", valorEmReais);
         }
 
     }

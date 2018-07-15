@@ -28,6 +28,8 @@ namespace Pedidos_Domain.Entities
 
         public decimal Price { get; set; }
 
+        public decimal? PricePromocao { get; set; }
+
         public int CategoryId { get; set; }
 
         int _quantidade = 0;
@@ -43,6 +45,8 @@ namespace Pedidos_Domain.Entities
             }
 
         }
+
+        public decimal DescontoPromocao { get; set; }
 
         public override string ToString()
         {

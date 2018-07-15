@@ -96,6 +96,7 @@
     <Compile Include="ListPromocoesActivity.cs" />
     <Compile Include="Adapters\CatalogoListAdapter.cs" />
     <Compile Include="ViewModels\CatalogoViewModel.cs" />
+    <Compile Include="Adapters\OnClickListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
