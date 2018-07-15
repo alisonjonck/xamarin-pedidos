@@ -6,11 +6,6 @@
 
 * [.NET Core 2.0 SDK](https://www.microsoft.com/net/download/windows)
 
-### Clone o projeto
-```
-git clone https://github.com/alisonjonck/robo.git
-```
-
 ### Rode os testes unitários da camada de Domínio/Regra de negócio
 
 ```
