@@ -994,6 +994,9 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0a000f
 			public const int bright_foreground_material_light = 2131361807;
 			
+			// aapt resource value: 0x7f0a0052
+			public const int btnComprar_textColor = 2131361874;
+			
 			// aapt resource value: 0x7f0a0010
 			public const int button_material_dark = 2131361808;
 			
@@ -1120,11 +1123,11 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0a0036
 			public const int switch_thumb_disabled_material_light = 2131361846;
 			
-			// aapt resource value: 0x7f0a0052
-			public const int switch_thumb_material_dark = 2131361874;
-			
 			// aapt resource value: 0x7f0a0053
-			public const int switch_thumb_material_light = 2131361875;
+			public const int switch_thumb_material_dark = 2131361875;
+			
+			// aapt resource value: 0x7f0a0054
+			public const int switch_thumb_material_light = 2131361876;
 			
 			// aapt resource value: 0x7f0a0037
 			public const int switch_thumb_normal_material_dark = 2131361847;
@@ -1819,11 +1822,11 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0029
 			public const int SYM = 2131427369;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int UnidadeTextView = 2131427461;
+			// aapt resource value: 0x7f0b0086
+			public const int UnidadeTextView = 2131427462;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int action0 = 2131427439;
+			// aapt resource value: 0x7f0b0070
+			public const int action0 = 2131427440;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int action_bar = 2131427415;
@@ -1846,17 +1849,17 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0035
 			public const int action_bar_title = 2131427381;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int action_container = 2131427436;
+			// aapt resource value: 0x7f0b006d
+			public const int action_container = 2131427437;
 			
 			// aapt resource value: 0x7f0b0058
 			public const int action_context_bar = 2131427416;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int action_divider = 2131427443;
+			// aapt resource value: 0x7f0b0074
+			public const int action_divider = 2131427444;
 			
-			// aapt resource value: 0x7f0b006d
-			public const int action_image = 2131427437;
+			// aapt resource value: 0x7f0b006e
+			public const int action_image = 2131427438;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1873,11 +1876,11 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0037
 			public const int action_mode_close_button = 2131427383;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int action_text = 2131427438;
+			// aapt resource value: 0x7f0b006f
+			public const int action_text = 2131427439;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int actions = 2131427452;
+			// aapt resource value: 0x7f0b007d
+			public const int actions = 2131427453;
 			
 			// aapt resource value: 0x7f0b0038
 			public const int activity_chooser_view_content = 2131427384;
@@ -1906,29 +1909,32 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0066
 			public const int bottomToolbar = 2131427430;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int btnDecreaseQuantidade = 2131427463;
+			// aapt resource value: 0x7f0b0067
+			public const int btnComprar = 2131427431;
 			
 			// aapt resource value: 0x7f0b0088
-			public const int btnIncreaseQuantidade = 2131427464;
+			public const int btnDecreaseQuantidade = 2131427464;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int btnOpenCatalogo = 2131427435;
+			// aapt resource value: 0x7f0b0089
+			public const int btnIncreaseQuantidade = 2131427465;
+			
+			// aapt resource value: 0x7f0b006c
+			public const int btnOpenCatalogo = 2131427436;
 			
 			// aapt resource value: 0x7f0b003e
 			public const int buttonPanel = 2131427390;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int buttonsQuantidadeLayout = 2131427462;
+			// aapt resource value: 0x7f0b0087
+			public const int buttonsQuantidadeLayout = 2131427463;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int cancel_action = 2131427440;
+			// aapt resource value: 0x7f0b0071
+			public const int cancel_action = 2131427441;
 			
 			// aapt resource value: 0x7f0b004e
 			public const int checkbox = 2131427406;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int chronometer = 2131427448;
+			// aapt resource value: 0x7f0b0079
+			public const int chronometer = 2131427449;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int collapseActionView = 2131427371;
@@ -1957,8 +1963,8 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0022
 			public const int end = 2131427362;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int end_padder = 2131427454;
+			// aapt resource value: 0x7f0b007f
+			public const int end_padder = 2131427455;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int expand_activities_button = 2131427385;
@@ -1978,8 +1984,8 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b003d
 			public const int icon = 2131427389;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int icon_group = 2131427453;
+			// aapt resource value: 0x7f0b007e
+			public const int icon_group = 2131427454;
 			
 			// aapt resource value: 0x7f0b002c
 			public const int ifRoom = 2131427372;
@@ -1987,8 +1993,8 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b003a
 			public const int image = 2131427386;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int info = 2131427449;
+			// aapt resource value: 0x7f0b007a
+			public const int info = 2131427450;
 			
 			// aapt resource value: 0x7f0b0034
 			public const int italic = 2131427380;
@@ -2005,14 +2011,14 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b003c
 			public const int list_item = 2131427388;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int main_content = 2131427433;
+			// aapt resource value: 0x7f0b006a
+			public const int main_content = 2131427434;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int media_actions = 2131427442;
+			// aapt resource value: 0x7f0b0073
+			public const int media_actions = 2131427443;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int message = 2131427465;
+			// aapt resource value: 0x7f0b008a
+			public const int message = 2131427466;
 			
 			// aapt resource value: 0x7f0b0023
 			public const int middle = 2131427363;
@@ -2020,8 +2026,8 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b001a
 			public const int multiply = 2131427354;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int nameTextView = 2131427456;
+			// aapt resource value: 0x7f0b0081
+			public const int nameTextView = 2131427457;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int never = 2131427373;
@@ -2032,23 +2038,23 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0010
 			public const int normal = 2131427344;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int notification_background = 2131427451;
+			// aapt resource value: 0x7f0b007c
+			public const int notification_background = 2131427452;
+			
+			// aapt resource value: 0x7f0b0076
+			public const int notification_main_column = 2131427446;
 			
 			// aapt resource value: 0x7f0b0075
-			public const int notification_main_column = 2131427445;
-			
-			// aapt resource value: 0x7f0b0074
-			public const int notification_main_column_container = 2131427444;
+			public const int notification_main_column_container = 2131427445;
 			
 			// aapt resource value: 0x7f0b0040
 			public const int parentPanel = 2131427392;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int photoImageView = 2131427455;
+			// aapt resource value: 0x7f0b0080
+			public const int photoImageView = 2131427456;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int priceTextView = 2131427457;
+			// aapt resource value: 0x7f0b0082
+			public const int priceTextView = 2131427458;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -2056,29 +2062,29 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0006
 			public const int progress_horizontal = 2131427334;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int promocaoNameTextView = 2131427431;
-			
-			// aapt resource value: 0x7f0b0082
-			public const int promocaoTextView = 2131427458;
-			
-			// aapt resource value: 0x7f0b006a
-			public const int promocoesListView = 2131427434;
-			
-			// aapt resource value: 0x7f0b0084
-			public const int quantidadeTextView = 2131427460;
+			// aapt resource value: 0x7f0b0068
+			public const int promocaoNameTextView = 2131427432;
 			
 			// aapt resource value: 0x7f0b0083
-			public const int quantidadeUnidadeLayout = 2131427459;
+			public const int promocaoTextView = 2131427459;
+			
+			// aapt resource value: 0x7f0b006b
+			public const int promocoesListView = 2131427435;
+			
+			// aapt resource value: 0x7f0b0085
+			public const int quantidadeTextView = 2131427461;
+			
+			// aapt resource value: 0x7f0b0084
+			public const int quantidadeUnidadeLayout = 2131427460;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int radio = 2131427408;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int right_icon = 2131427450;
+			// aapt resource value: 0x7f0b007b
+			public const int right_icon = 2131427451;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int right_side = 2131427446;
+			// aapt resource value: 0x7f0b0077
+			public const int right_side = 2131427447;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int screen = 2131427355;
@@ -2152,8 +2158,8 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b001e
 			public const int src_over = 2131427358;
 			
-			// aapt resource value: 0x7f0b0071
-			public const int status_bar_latest_event_content = 2131427441;
+			// aapt resource value: 0x7f0b0072
+			public const int status_bar_latest_event_content = 2131427442;
 			
 			// aapt resource value: 0x7f0b0051
 			public const int submenuarrow = 2131427409;
@@ -2179,8 +2185,8 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b0044
 			public const int textSpacerNoTitle = 2131427396;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int time = 2131427447;
+			// aapt resource value: 0x7f0b0078
+			public const int time = 2131427448;
 			
 			// aapt resource value: 0x7f0b000e
 			public const int title = 2131427342;
@@ -2191,8 +2197,8 @@ namespace Pedidos_App.droid
 			// aapt resource value: 0x7f0b004a
 			public const int title_template = 2131427402;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int toolbar = 2131427432;
+			// aapt resource value: 0x7f0b0069
+			public const int toolbar = 2131427433;
 			
 			// aapt resource value: 0x7f0b0030
 			public const int top = 2131427376;
@@ -2530,6 +2536,9 @@ namespace Pedidos_App.droid
 			
 			// aapt resource value: 0x7f060022
 			public const int app_name = 2131099682;
+			
+			// aapt resource value: 0x7f060023
+			public const int btnComprar = 2131099683;
 			
 			// aapt resource value: 0x7f060020
 			public const int btnPromocoes = 2131099680;

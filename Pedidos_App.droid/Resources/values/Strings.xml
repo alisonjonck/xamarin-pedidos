@@ -4,4 +4,5 @@
     <string name="btnPromocoes">Abrir Promoções!</string>
     <string name="hello">Hello World, Click Me!</string>
     <string name="app_name">Pedidos_App.droid</string>
+    <string name="btnComprar"><b>Comprar - R$ 0,00</b></string>
 </resources>

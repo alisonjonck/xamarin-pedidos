@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using Android.Content;
+using Android.Views;
 
 namespace Pedidos_App.droid
 {
@@ -18,6 +19,9 @@ namespace Pedidos_App.droid
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
             ActionBar.Title = "Pedidos";
+
+            var bottomToolbar = FindViewById<Toolbar>(Resource.Id.bottomToolbar);
+            bottomToolbar.Visibility = ViewStates.Invisible;
 
             var btnCatagolo = FindViewById<Button>(Resource.Id.btnOpenCatalogo);
 

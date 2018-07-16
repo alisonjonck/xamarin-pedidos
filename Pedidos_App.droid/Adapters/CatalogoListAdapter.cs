@@ -30,12 +30,15 @@ namespace Pedidos_App.droid.Adapters
 
         List<CatalogoPromocao> _catalogosPromocao = new List<CatalogoPromocao>();
 
+        Toolbar _bottomToolbar;
+
         const int PRODUTO_ITEM = 0;
 
         const int HEADER = 1;
 
-        public CatalogoListAdapter(Context context, List<CatalogoPromocao> catalogos)
+        public CatalogoListAdapter(Context context, List<CatalogoPromocao> catalogos, Toolbar bottomToolbar)
         {
+            _bottomToolbar = bottomToolbar;
             Catalogos = new ObservableCollection<object>();
 
             foreach (var catalogo in catalogos)
@@ -135,6 +138,9 @@ namespace Pedidos_App.droid.Adapters
                         {
                             produto.Quantidade += 1;
                             _updateValoresPromocaoProduto(produto);
+
+                            _manageBottomToolbarComprar(parent, produto);
+
                             NotifyDataSetChanged();
                         }));
 
@@ -146,6 +152,9 @@ namespace Pedidos_App.droid.Adapters
                                 produto.Quantidade -= 1;
 
                                 _updateValoresPromocaoProduto(produto);
+
+                                _manageBottomToolbarComprar(parent, produto);
+
                                 NotifyDataSetChanged();
                             }
                             catch (ExceptionQuantidade ex)
@@ -167,7 +176,27 @@ namespace Pedidos_App.droid.Adapters
             return view;
         }
 
-        private async void _updateValoresPromocaoProduto(Produto produto)
+        ObservableCollection<Produto> _carrinho = new ObservableCollection<Produto>();
+        void _manageBottomToolbarComprar(ViewGroup parent, Produto produto)
+        {
+            var produtoCarrinho = _carrinho.FirstOrDefault(c => c.Id == produto.Id);
+            if (produtoCarrinho == null)
+                _carrinho.Add(produto);
+            else
+            {
+                if (produto.Quantidade > 0)
+                    _carrinho[_carrinho.IndexOf(produtoCarrinho)] = produto;
+                else
+                    _carrinho.Remove(produtoCarrinho);
+            }
+
+            if (_carrinho.Count > 0)
+                _bottomToolbar.Visibility = ViewStates.Visible;
+            else
+                _bottomToolbar.Visibility = ViewStates.Invisible;
+        }
+
+        async void _updateValoresPromocaoProduto(Produto produto)
         {
             var catalogoPromocao = await _getCatalogoPromocaoAsync(produto.CategoryId);
 

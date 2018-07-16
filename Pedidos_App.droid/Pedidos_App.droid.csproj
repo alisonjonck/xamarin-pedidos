@@ -118,12 +118,14 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\layout\toolbar.xml" />
     <AndroidResource Include="Resources\layout\bottomToolbar.xml" />
+    <AndroidResource Include="Resources\color\btnComprar_textColor.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Adapters\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Activities\" />
+    <Folder Include="Resources\color\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pedidos_Service\Pedidos_Service.csproj">
