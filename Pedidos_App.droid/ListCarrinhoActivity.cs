@@ -33,11 +33,16 @@ namespace Pedidos_App.droid
             LoadCarrinho();
         }
 
-        async void LoadCarrinho()
+        void LoadCarrinho()
         {
             listView = FindViewById<ListView>(Resource.Id.carrinhoListView);
 
             listView.Adapter = new CarrinhoListAdapter(this, CatalogoListAdapter._carrinho, bottomToolbar);
+
+            View footerView = new LinearLayout(this);
+            footerView.SetPadding(0, 0, 0, 130);
+
+            listView.AddFooterView(footerView);
         }
     }
 }

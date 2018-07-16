@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px"
-    android:paddingBottom="4dp">
+    android:background="#fff"
+    android:minHeight="25px">
     <FFImageLoading.Views.ImageViewAsync
         android:id="@+id/photoImageView"
         android:layout_width="90dp"
