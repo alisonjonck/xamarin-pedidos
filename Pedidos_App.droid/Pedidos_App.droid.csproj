@@ -97,6 +97,8 @@
     <Compile Include="Adapters\CatalogoListAdapter.cs" />
     <Compile Include="ViewModels\CatalogoViewModel.cs" />
     <Compile Include="Adapters\OnClickListener.cs" />
+    <Compile Include="ListCarrinhoActivity.cs" />
+    <Compile Include="Adapters\CarrinhoListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -119,6 +121,7 @@
     <AndroidResource Include="Resources\layout\toolbar.xml" />
     <AndroidResource Include="Resources\layout\bottomToolbar.xml" />
     <AndroidResource Include="Resources\color\btnComprar_textColor.xml" />
+    <AndroidResource Include="Resources\layout\ListCarrinho.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

@@ -31,6 +31,7 @@ namespace Pedidos_App.droid.Adapters
         List<CatalogoPromocao> _catalogosPromocao = new List<CatalogoPromocao>();
 
         Toolbar _bottomToolbar;
+        Button _btnComprarBottomToolbar;
 
         const int PRODUTO_ITEM = 0;
 
@@ -39,6 +40,16 @@ namespace Pedidos_App.droid.Adapters
         public CatalogoListAdapter(Context context, List<CatalogoPromocao> catalogos, Toolbar bottomToolbar)
         {
             _bottomToolbar = bottomToolbar;
+            _btnComprarBottomToolbar = _bottomToolbar.FindViewById<Button>(Resource.Id.btnComprar);
+            _updateTotalBotaoComprar();
+
+            _btnComprarBottomToolbar.Click += (sender, e) =>
+            {
+                var intent = new Intent(context, typeof(ListCarrinhoActivity));
+
+                context.StartActivity(intent);
+            };
+
             Catalogos = new ObservableCollection<object>();
 
             foreach (var catalogo in catalogos)
@@ -48,7 +59,8 @@ namespace Pedidos_App.droid.Adapters
 
                 foreach (var produto in catalogo.Produtos)
                 {
-                    Catalogos.Add(produto);
+                    var produtoCarrinho = _carrinho.FirstOrDefault(p => p.Id == produto.Id);
+                    Catalogos.Add(produtoCarrinho ?? produto);
                 }
             }
         }
@@ -176,7 +188,7 @@ namespace Pedidos_App.droid.Adapters
             return view;
         }
 
-        ObservableCollection<Produto> _carrinho = new ObservableCollection<Produto>();
+        public static ObservableCollection<Produto> _carrinho = new ObservableCollection<Produto>();
         void _manageBottomToolbarComprar(ViewGroup parent, Produto produto)
         {
             var produtoCarrinho = _carrinho.FirstOrDefault(c => c.Id == produto.Id);
@@ -192,10 +204,7 @@ namespace Pedidos_App.droid.Adapters
 
             if (_carrinho.Count > 0)
             {
-                decimal totalCarrinho = _carrinho.Sum(c => c.PricePromocao > 0 ? c.PricePromocao.GetValueOrDefault() : c.Price);
-                var btnComprarBottomToolbar = _bottomToolbar.FindViewById<Button>(Resource.Id.btnComprar);
-                btnComprarBottomToolbar.Text = $"Comprar - R$ {StringFormatter.ToBRLCurrency(totalCarrinho.ToString())}";
-                btnComprarBottomToolbar.SetTypeface(null, Android.Graphics.TypefaceStyle.Bold);
+                _updateTotalBotaoComprar();
 
                 _bottomToolbar.Visibility = ViewStates.Visible;
             }
@@ -227,6 +236,14 @@ namespace Pedidos_App.droid.Adapters
 
             return await Task.FromResult(
                 _catalogosPromocao.FirstOrDefault(c => c.Promocao.CategoryId == categoryId));
+        }
+
+        void _updateTotalBotaoComprar()
+        {
+            decimal totalCarrinho = _carrinho.Sum(c => c.PricePromocao > 0 ? c.PricePromocao.GetValueOrDefault() : c.Price);
+
+            _btnComprarBottomToolbar.Text = $"Comprar - R$ {StringFormatter.ToBRLCurrency(totalCarrinho.ToString())}";
+            _btnComprarBottomToolbar.SetTypeface(null, Android.Graphics.TypefaceStyle.Bold);
         }
     }
 

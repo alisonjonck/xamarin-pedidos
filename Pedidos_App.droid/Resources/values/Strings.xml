@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="listPromocoes">Catálogo Promoções</string>
+    <string name="listCarrinho">Carrinho</string>
     <string name="btnPromocoes">Abrir Promoções!</string>
     <string name="hello">Hello World, Click Me!</string>
     <string name="app_name">Pedidos_App.droid</string>
     <string name="btnComprar"><b>Comprar - R$ 0,00</b></string>
+    <string name="FinalizadoSimulacaoCompra">Finalizada Simulação</string>
 </resources>

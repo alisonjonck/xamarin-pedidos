@@ -27,7 +27,10 @@ namespace Pedidos_App.droid
             ActionBar.Title = "Catálogo";
 
             bottomToolbar = FindViewById<Toolbar>(Resource.Id.bottomToolbar);
-            bottomToolbar.Visibility = ViewStates.Invisible;
+
+            bottomToolbar.Visibility = CatalogoListAdapter._carrinho.Count > 0
+                ? ViewStates.Visible
+                : ViewStates.Invisible;
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);

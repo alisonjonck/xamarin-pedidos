@@ -27,7 +27,6 @@ namespace Pedidos_App.droid
 
             btnCatagolo.Click += (sender, e) => {
                 var intent = new Intent(this, typeof(ListPromocoesActivity));
-
                 StartActivity(intent);
             };
         }
