@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
-    <ListView
-        android:id="@+id/promocoesListView"
+    <FrameLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:fastScrollEnabled="true" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:id="@+id/main_content"
+        android:layout_below="@id/toolbar">
+        <ListView
+            android:id="@+id/promocoesListView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fastScrollEnabled="true" />
+        <include
+            android:id="@+id/bottomToolbar"
+            layout="@layout/bottomtoolbar"
+            android:gravity="bottom" />
+    </FrameLayout>
+</RelativeLayout>
