@@ -127,7 +127,7 @@ namespace Pedidos_App.droid.Adapters
 
                     holder.Photo.SetImageDrawable(imageView.Drawable);
                     holder.Name.Text = produto.Name;
-                    holder.Price.Text = "R$ " + StringFormatter.ToBRLCurrency((produto?.PricePromocao > 0 ? produto.PricePromocao : produto.Price).ToString());
+                    holder.Price.Text = "R$ " + StringFormatter.ToBRLCurrency((produto.PricePromocao > 0 ? produto.PricePromocao : produto.Price).ToString());
                     holder.Quantidade.Text = produto.Quantidade.ToString();
                     holder.ValorPromocao.Text = produto.DescontoPromocao != 0
                         ? StringFormatter.ToBRLCurrency(produto.DescontoPromocao.ToString()) + "% de desconto"
@@ -191,7 +191,14 @@ namespace Pedidos_App.droid.Adapters
             }
 
             if (_carrinho.Count > 0)
+            {
+                decimal totalCarrinho = _carrinho.Sum(c => c.PricePromocao > 0 ? c.PricePromocao.GetValueOrDefault() : c.Price);
+                var btnComprarBottomToolbar = _bottomToolbar.FindViewById<Button>(Resource.Id.btnComprar);
+                btnComprarBottomToolbar.Text = $"Comprar - R$ {StringFormatter.ToBRLCurrency(totalCarrinho.ToString())}";
+                btnComprarBottomToolbar.SetTypeface(null, Android.Graphics.TypefaceStyle.Bold);
+
                 _bottomToolbar.Visibility = ViewStates.Visible;
+            }
             else
                 _bottomToolbar.Visibility = ViewStates.Invisible;
         }
