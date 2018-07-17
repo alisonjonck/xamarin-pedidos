@@ -3,6 +3,6 @@
   <style name="CustomTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowActionBar">false</item>
-    <item name="android:colorAccent">#696969</item>
+    <item name="android:colorAccent">#404040</item>
   </style>
 </resources>

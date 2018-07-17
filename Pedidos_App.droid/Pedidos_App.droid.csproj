@@ -120,8 +120,8 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\layout\toolbar.xml" />
     <AndroidResource Include="Resources\layout\bottomToolbar.xml" />
-    <AndroidResource Include="Resources\color\btnComprar_textColor.xml" />
     <AndroidResource Include="Resources\layout\ListCarrinho.axml" />
+    <AndroidResource Include="Resources\color\btnComprar_textColor.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

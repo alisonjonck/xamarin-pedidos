@@ -188,6 +188,11 @@ namespace Pedidos_App.droid.Adapters
             return view;
         }
 
+        public override bool IsEnabled(int position)
+        {
+            return false;
+        }
+
         public static ObservableCollection<Produto> _carrinho = new ObservableCollection<Produto>();
         void _manageBottomToolbarComprar(ViewGroup parent, Produto produto)
         {

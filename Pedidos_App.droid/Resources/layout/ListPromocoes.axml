@@ -16,6 +16,7 @@
             android:id="@+id/promocoesListView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:layout_margin="8dp"
             android:fastScrollEnabled="true" />
         <include

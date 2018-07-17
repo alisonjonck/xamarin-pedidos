@@ -38,7 +38,11 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp" />
+        android:background="#006400"
+        android:textColor="#fff"
+        android:layout_marginLeft="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

@@ -94,6 +94,11 @@ namespace Pedidos_App.droid.Adapters
 
             return view;
         }
+
+        public override bool IsEnabled(int position)
+        {
+            return false;
+        }
     }
 
 }
