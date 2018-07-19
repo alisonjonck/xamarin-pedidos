@@ -92,6 +92,11 @@ namespace Pedidos_App.droid.Adapters
                 ? StringFormatter.ToBRLCurrency(produto.DescontoPromocao.ToString()) + "% de desconto"
                 : "";
 
+            if (string.IsNullOrWhiteSpace(holder.ValorPromocao.Text))
+                holder.ValorPromocao.Visibility = ViewStates.Invisible;
+            else
+                holder.ValorPromocao.Visibility = ViewStates.Visible;
+
             return view;
         }
 

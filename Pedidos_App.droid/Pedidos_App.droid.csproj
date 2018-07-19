@@ -99,6 +99,7 @@
     <Compile Include="Adapters\OnClickListener.cs" />
     <Compile Include="ListCarrinhoActivity.cs" />
     <Compile Include="Adapters\CarrinhoListAdapter.cs" />
+    <Compile Include="Adapters\Loja.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

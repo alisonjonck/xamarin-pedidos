@@ -59,7 +59,7 @@ namespace Pedidos_App.droid.Adapters
 
                 foreach (var produto in catalogo.Produtos)
                 {
-                    var produtoCarrinho = _carrinho.FirstOrDefault(p => p.Id == produto.Id);
+                    var produtoCarrinho = Loja.Carrinho.FirstOrDefault(p => p.Id == produto.Id);
                     Catalogos.Add(produtoCarrinho ?? produto);
                 }
             }
@@ -145,6 +145,11 @@ namespace Pedidos_App.droid.Adapters
                         ? StringFormatter.ToBRLCurrency(produto.DescontoPromocao.ToString()) + "% de desconto"
                         : "";
 
+                    if (string.IsNullOrWhiteSpace(holder.ValorPromocao.Text))
+                        holder.ValorPromocao.Visibility = ViewStates.Invisible;
+                    else
+                        holder.ValorPromocao.Visibility = ViewStates.Visible;
+                    
                     holder.IncreaseButton.SetOnClickListener(new OnClickListener(
                         () =>
                         {
@@ -193,21 +198,20 @@ namespace Pedidos_App.droid.Adapters
             return false;
         }
 
-        public static ObservableCollection<Produto> _carrinho = new ObservableCollection<Produto>();
         void _manageBottomToolbarComprar(ViewGroup parent, Produto produto)
         {
-            var produtoCarrinho = _carrinho.FirstOrDefault(c => c.Id == produto.Id);
+            var produtoCarrinho = Loja.Carrinho.FirstOrDefault(c => c.Id == produto.Id);
             if (produtoCarrinho == null)
-                _carrinho.Add(produto);
+                Loja.Carrinho.Add(produto);
             else
             {
                 if (produto.Quantidade > 0)
-                    _carrinho[_carrinho.IndexOf(produtoCarrinho)] = produto;
+                    Loja.Carrinho[Loja.Carrinho.IndexOf(produtoCarrinho)] = produto;
                 else
-                    _carrinho.Remove(produtoCarrinho);
+                    Loja.Carrinho.Remove(produtoCarrinho);
             }
 
-            if (_carrinho.Count > 0)
+            if (Loja.Carrinho.Count > 0)
             {
                 _updateTotalBotaoComprar();
 
@@ -245,7 +249,7 @@ namespace Pedidos_App.droid.Adapters
 
         void _updateTotalBotaoComprar()
         {
-            decimal totalCarrinho = _carrinho.Sum(c => c.PricePromocao > 0 ? c.PricePromocao.GetValueOrDefault() : c.Price);
+            decimal totalCarrinho = Loja.Carrinho.Sum(c => c.PricePromocao > 0 ? c.PricePromocao.GetValueOrDefault() : c.Price);
 
             _btnComprarBottomToolbar.Text = $"Comprar - R$ {StringFormatter.ToBRLCurrency(totalCarrinho.ToString())}";
             _btnComprarBottomToolbar.SetTypeface(null, Android.Graphics.TypefaceStyle.Bold);

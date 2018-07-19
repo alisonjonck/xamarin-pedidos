@@ -28,7 +28,7 @@ namespace Pedidos_App.droid
 
             bottomToolbar = FindViewById<Toolbar>(Resource.Id.bottomToolbar);
 
-            bottomToolbar.Visibility = CatalogoListAdapter._carrinho.Count > 0
+            bottomToolbar.Visibility = Loja.Carrinho.Count > 0
                 ? ViewStates.Visible
                 : ViewStates.Invisible;
 

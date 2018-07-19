@@ -37,7 +37,7 @@ namespace Pedidos_App.droid
         {
             listView = FindViewById<ListView>(Resource.Id.carrinhoListView);
 
-            listView.Adapter = new CarrinhoListAdapter(this, CatalogoListAdapter._carrinho, bottomToolbar);
+            listView.Adapter = new CarrinhoListAdapter(this, Loja.Carrinho, bottomToolbar);
 
             View footerView = new LinearLayout(this);
             footerView.SetPadding(0, 0, 0, 130);
