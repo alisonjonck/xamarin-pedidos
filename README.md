@@ -6,6 +6,12 @@
 
 * [.NET Core 2.0 SDK](https://www.microsoft.com/net/download/windows)
 
+### Inicie a aplicação
+
+```
+cd App && dotnet run
+```
+
 ### Rode os testes unitários da camada de Domínio/Regra de negócio
 
 ```
